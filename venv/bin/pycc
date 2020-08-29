@@ -1,0 +1,3 @@
+#!/Users/amanyabdelhalim/PycharmProjects/criteo/venv/bin/python
+from numba.pycc import main
+main()

@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: mleap
+Version: 0.16.1
+Summary: MLeap Python API
+Home-page: https://github.com/combust/mleap/tree/master/python
+Author: MLeap Developers
+Author-email: combust@combust.ml
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Communications :: Chat
+Classifier: Topic :: Internet
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Requires-Dist: numpy (>=1.8.2)
+Requires-Dist: six (>=1.10.0)
+Requires-Dist: scipy (>=0.13.0b1)
+Requires-Dist: pandas (>=0.18.1)
+Requires-Dist: scikit-learn (>=0.18.dev0)
+
+UNKNOWN
+
+
