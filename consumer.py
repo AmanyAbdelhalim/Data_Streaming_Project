@@ -1,3 +1,5 @@
+import os
+import sys
 
 from kafka import KafkaConsumer
 from kafka import KafkaProducer
@@ -86,10 +88,32 @@ class ConsumerProducer:
             self.producer.send('predictions', value=svm_d)
 
 if __name__=="__main__":
-    lrModelPath="/Users/amanyabdelhalim/Desktop/weCloudData/criteo/lr_model"
-    svmModelPath="/Users/amanyabdelhalim/Desktop/weCloudData/criteo/lsvm_model"
-    pHost = 'localhost:9092'
-    cHost = 'localhost:9092'
-    groupId = 'criteo-consumer-2'
-    pC = ConsumerProducer(pHost, cHost, groupId, lrModelPath, svmModelPath)
+    #lrModelPath="/Users/amanyabdelhalim/Desktop/weCloudData/criteo/lr_model"
+    if 'LR_MODEL_PATH' not in os.environ:
+        print("LR_MODEL_PATH environment variable can't be empty. Exiting...")
+        sys.exit(1)
+    lr_model_path_env = os.environ['LR_MODEL_PATH']
+    if 'SVM_MODEL_PATH' not in os.environ:
+        print("SVM_MODEL_PATH environment variable can't be empty. Exiting...")
+        sys.exit(1)
+    svm_model_path_env= os.environ['SVM_MODEL_PATH']
+    #svmpath="/Users/amanyabdelhalim/Desktop/weCloudData/criteo/lsvm_model"
+    if 'PRODUCER_KAFKA_BOOTSTRAP_PORT' not in os.environ:
+        print("PRODUCER_KAFKA_BOOTSTRAP_PORT environment variable can't be empty. Exiting...")
+        sys.exit(1)
+    p_host_env = os.environ['PRODUCER_KAFKA_BOOTSTRAP_PORT']
+
+    if 'CONSUMER_KAFKA_BOOTSTRAP_PORT' not in os.environ:
+        print("CONSUMER_KAFKA_BOOTSTRAP_PORT environment variable can't be empty. Exiting...")
+        sys.exit(1)
+    c_host_env = os.environ['CONSUMER_KAFKA_BOOTSTRAP_PORT']
+    # pHost = 'localhost:9092'
+    # cHost = 'localhost:9092'
+    if "GROUP_ID" not in os.environ:
+        print("GROUP_ID environment variable can't be empty. Exiting...")
+        sys.exit(1)
+    # groupId = 'criteo-consumer-2'
+    group_id_env = os.environ['GROUP_ID']
+
+    pC = ConsumerProducer(p_host_env, c_host_env, group_id_env, lr_model_path_env, svm_model_path_env)
     pC.prepareConsumedMaessagesAndSend()
